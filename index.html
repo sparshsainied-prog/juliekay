@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Julie Kay | Not My Father and her other books</title>
+<meta name="description" content="A homepage idea for Julie Kay, author of Not My Father, The Ties That Bind, River Bend and Crikey Roo and the Riddler.">
+<meta property="og:title" content="Julie Kay | Not My Father and her other books">
+<meta property="og:description" content="A homepage idea made by Sparsh Saini for Julie Kay. Not her official site.">
+<meta property="og:image" content="https://sparshsainied-prog.github.io/juliekay/img/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* Every value comes off the Not My Father cover (Vivid Publishing, 2019): its pale sky, the sea-white
+   paper, the pen ink, the coral of the title and the ribbon. EB Garamond because the cover title is
+   set in Garamond. The coral and serif are the cover's, not a house default. slop-ok unslop-ignore */
+:root{
+  --sky:#C8E0E7; --sky-2:#DBE8ED; --sea:#F5F5F2; --paper:#F6EFEB;
+  --ink:#2F302E; --ink-2:#4A4B48; --box:#1B191A;
+  --coral:#D96462; --ribbon:#C9504F; --kimono:#F59993;
+  --serif:"EB Garamond", Garamond, "Times New Roman", serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--sea);color:var(--ink);font:400 1.1875rem/1.6 var(--serif);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ribbon);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:0}
+.skip:focus{left:8px;top:8px;z-index:20;background:var(--sea);padding:.4rem .8rem}
+.strip{position:absolute;top:0;left:0;right:0;z-index:5;background:rgba(27,25,26,.9);color:#E9E4E1;font-size:.95rem;line-height:1.4;text-align:center;padding:.55rem 1rem}
+
+/* The cover's ribbon is the button: its own coral brush band, cut from the cover, behind the label */
+.rib-btn{position:relative;display:inline-flex;align-items:center;min-height:48px;padding:.55rem 1.6rem .6rem;color:#fff;text-decoration:none;font:600 1.2rem/1.2 var(--serif);letter-spacing:.02em;isolation:isolate}
+.rib-btn::before{content:"";position:absolute;inset:0;z-index:-1;background:url(img/ribbon-btn.png) center/100% 100% no-repeat;transition:transform .18s ease-out}
+.rib-btn:hover::before{transform:scaleX(1.04)}
+.text-link{font:500 1.15rem/1.3 var(--serif);text-decoration-thickness:1px;text-underline-offset:.22em;padding:.6rem 0;display:inline-block}
+
+/* ---------------------------------------------------------------- hero: the black box */
+.hero{position:relative;height:100svh}
+.js .hero{height:480svh}
+.stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--box);perspective-origin:50% 50%}
+.scene{position:absolute;inset:0;transform-origin:50% 50%;background:linear-gradient(#CFE3EA,#E9EEEF 46%,#F5F1EE 70%);will-change:transform}
+.cover{position:absolute;right:0;top:0;height:100%;aspect-ratio:350/541;container-type:inline-size}
+.cover .plate{position:absolute;right:0;top:0;height:100%;width:auto;max-width:none}
+.fade-l{-webkit-mask-image:linear-gradient(to right,transparent,#000 7%);mask-image:linear-gradient(to right,transparent,#000 7%)}
+.pl{position:absolute;max-width:none;will-change:transform}
+.couple{left:8.5714%;top:31.0536%;width:85.7143%}
+.para{left:59.7143%;top:35.8595%;width:31.4286%;aspect-ratio:1}
+.para img{width:100%;transform-origin:47.27% 50.91%;will-change:transform}
+.ships{left:84.5714%;top:46.9501%;width:15.4286%}
+.branch{left:0;top:5.5453%;width:37.7143%}
+.blossoms{left:0;top:79.4824%;width:100%}
+.ttl{left:0;top:0;width:100%;height:100%;margin:0;color:var(--coral);font-weight:400;line-height:1;pointer-events:none}
+.ttl span{position:absolute;display:block;white-space:nowrap;will-change:transform,opacity}
+.ttl .w1{left:47.1%;top:4.7%;font-size:13.9cqw}
+.ttl .w2{left:57.7%;top:13.8%;font-size:8.2cqw;color:var(--ink)}
+.ttl .w3{left:35.1%;top:20.1%;font-size:13.9cqw}
+.rib{left:0;top:84.1035%;width:100%;aspect-ratio:350/86}
+.ribm{position:absolute;inset:0}
+.ribm img{width:100%}
+.rib h1{position:absolute;left:12.2%;top:17%;margin:0;color:#fff;font:400 9cqw/1 var(--serif);letter-spacing:.09em;text-transform:uppercase;will-change:opacity} /* slop-ok: the cover's own caps ribbon lettering */
+.dim{position:absolute;inset:0;background:var(--box);opacity:0;pointer-events:none;will-change:opacity}
+.box{position:absolute;inset:0;transform-style:preserve-3d;pointer-events:none;display:none;will-change:transform}
+.js .box{display:block}
+.wall{position:absolute;background:url(img/ink.jpg) 0 0/384px 384px var(--box);backface-visibility:visible}
+.wall::after{content:"";position:absolute;inset:0}
+.wall.t{left:0;top:0;width:100%;transform-origin:50% 0;transform:rotateX(90deg)}
+.wall.t::after{background:linear-gradient(to bottom,rgba(0,0,0,.62),rgba(0,0,0,.2))}
+.wall.b{left:0;bottom:0;width:100%;transform-origin:50% 100%;transform:rotateX(-90deg)}
+.wall.b::after{background:linear-gradient(to top,rgba(255,255,255,.05),rgba(0,0,0,.35))}
+.wall.l{left:0;top:0;height:100%;transform-origin:0 50%;transform:rotateY(-90deg)}
+.wall.l::after{background:linear-gradient(to right,rgba(0,0,0,.5),rgba(0,0,0,.15))}
+.wall.r{right:0;top:0;height:100%;transform-origin:100% 50%;transform:rotateY(90deg)}
+.wall.r::after{background:linear-gradient(to left,rgba(0,0,0,.45),rgba(0,0,0,.1))}
+/* the floor's edge where the picture meets the box, in the cover's pen */
+.edge{position:absolute;inset:0;box-shadow:inset 0 0 0 2px rgba(20,18,19,.85),inset 0 0 40px rgba(0,0,0,.25);pointer-events:none}
+
+.petals{position:absolute;inset:0;pointer-events:none;display:none}
+.js .petals{display:block}
+.petals img{position:absolute;left:50%;top:50%;width:44px;margin:-22px 0 0 -22px;opacity:0;will-change:transform,opacity}
+.lid{position:absolute;inset:0;display:none;background:url(img/ink.jpg) 0 0/384px 384px var(--box);color:#EDE8E4;transform-origin:100% 0;will-change:transform}
+.js .lid{display:grid;place-items:center}
+.lid::before{content:"";position:absolute;inset:14px;border:1.5px solid rgba(237,232,228,.32);border-radius:3px 6px 4px 5px}
+.lid::after{content:"";position:absolute;left:-5%;right:-5%;top:100%;height:90px;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,0))}
+.lid-in{position:relative;max-width:34rem;padding:0 2rem;text-align:center}
+.lid .who{margin:0 0 1.6rem;font:400 1.05rem/1 var(--serif);letter-spacing:.32em;text-transform:uppercase;color:#C9C2BD} /* slop-ok: echoes the cover's caps author line */
+.lid .line{margin:0;font:italic 400 clamp(1.7rem,4.6vw,2.6rem)/1.22 var(--serif);text-wrap:balance}
+.lid .lid-book{margin:1.6rem 0 0;font-size:1.05rem;color:#C9C2BD}
+
+.tagline{position:absolute;margin:0;font:italic 400 clamp(1.45rem,2.4vw,2.2rem)/1.2 var(--serif);color:var(--ink);text-wrap:balance}
+.copy{position:absolute;left:max(6vw,2rem);top:50%;width:min(33vw,30rem);transform:translateY(-50%)}
+.copy .tagline{position:static;margin:0 0 1.2rem}
+.copy p{margin:0 0 1.5rem;font-size:1.25rem;line-height:1.55;color:var(--ink-2)}
+.copy p.tagline{font-size:clamp(1.9rem,2.7vw,2.7rem);line-height:1.18;color:var(--ink);margin-bottom:1.3rem}
+.copy .acts{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.6rem}
+.m-only{display:none}
+
+@media (max-aspect-ratio:23/20){
+  .cover{right:0;left:0;top:auto;bottom:0;margin:0 auto;height:auto;width:min(100%,64.695svh)}
+  .cover .plate{right:auto;left:0;top:auto;bottom:0;width:100%;height:auto}
+  .fade-l{-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
+  .copy{display:none}
+  .tagline.m-only{left:7%;right:7%;top:max(9%,4.6rem);text-align:center}
+}
+
+/* ---------------------------------------------------------------- calm sections */
+.sec{padding:clamp(4rem,9vw,7.5rem) clamp(1.25rem,6vw,5rem)}
+.wrap{max-width:66rem;margin:0 auto}
+h2{font:500 clamp(2.3rem,5vw,3.6rem)/1.05 var(--serif);margin:0 0 1.2rem;text-wrap:balance}
+h3{font:500 clamp(1.7rem,3vw,2.2rem)/1.1 var(--serif);margin:0 0 .4rem}
+p{text-wrap:pretty}
+.lede{font-size:1.3rem;line-height:1.5}
+.small{font-size:1rem;color:var(--ink-2)}
+.pen{display:block;width:100%;height:14px;margin:0;color:var(--ink);opacity:.75}
+
+/* Not My Father */
+.nmf{background:var(--sea)}
+.nmf .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(2rem,6vw,5.5rem);align-items:start}
+.nmf figure{margin:0;position:relative}
+.nmf figure img{width:100%;max-width:360px;box-shadow:10px 14px 0 -2px var(--sky),0 2px 0 rgba(0,0,0,.08)}
+.nmf blockquote{margin:0 0 1.4rem;padding:0}
+.nmf blockquote p{margin:0 0 1rem}
+.nmf .first{font:italic 400 1.5rem/1.35 var(--serif)}
+.buy{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.6rem;margin:1.6rem 0 .6rem}
+.why{margin:2.4rem 0 0;padding-top:1.4rem;border-top:1px solid rgba(47,48,46,.25)}
+
+/* the other three books */
+.shelf{background:var(--sky-2)}
+.shelf h2{margin-bottom:.4rem}
+.book{display:grid;grid-template-columns:clamp(110px,18vw,190px) minmax(0,1fr);gap:clamp(1.25rem,4vw,3rem);padding:2.6rem 0;align-items:start}
+.book + .pen{margin:0}
+.book img{width:100%;box-shadow:0 1px 0 rgba(0,0,0,.1),6px 8px 18px -10px rgba(30,40,50,.45)}
+.book .kind{margin:0 0 1rem;font-style:italic;color:var(--ink-2)}
+.book p{margin:0 0 1rem;max-width:40rem}
+.book .prize{font-size:1.02rem;border-left:0;margin-top:1rem}
+.book .buy{margin:1.2rem 0 0}
+
+/* the class that read Crikey Roo */
+.class{background:var(--box);color:#EDE8E4}
+.class .wrap{max-width:52rem}
+.class blockquote{margin:0;font:italic 400 clamp(1.7rem,3.6vw,2.6rem)/1.28 var(--serif);text-wrap:balance}
+.class blockquote p{margin:0}
+.class .src{margin:1.6rem 0 0;font-size:1.05rem;color:#C9C2BD}
+.class .src a{color:#EDE8E4}
+.class h2{font-size:clamp(1.5rem,2.6vw,1.9rem);font-style:italic;font-weight:400;color:var(--kimono);margin-bottom:1.6rem}
+
+/* All Booked Out */
+.fair{background:var(--sea)}
+.fair .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2rem,6vw,5rem);align-items:center}
+.date{margin:0;color:var(--ribbon);line-height:.95}
+.date .d{display:block;font-size:clamp(6rem,15vw,10.5rem);font-weight:500}
+.date .m{display:block;font-size:clamp(1.8rem,3.4vw,2.6rem);font-style:italic;color:var(--ink)}
+.fair dl{margin:1.2rem 0 1.4rem;display:grid;grid-template-columns:auto 1fr;gap:.35rem 1.2rem}
+.fair dt{color:var(--ink-2);font-style:italic}
+.fair dd{margin:0}
+
+/* about */
+.about{background:var(--sky-2)}
+.about .wrap{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(2rem,6vw,5rem);align-items:start}
+.about figure{margin:0}
+.about figure img{width:100%;max-width:340px}
+.about figcaption{margin-top:.6rem;font-size:.95rem;color:var(--ink-2);font-style:italic}
+.about ul{list-style:none;margin:1.4rem 0 0;padding:0}
+.about li{padding:.75rem 0;border-top:1px solid rgba(47,48,46,.2)}
+.about li:last-child{border-bottom:1px solid rgba(47,48,46,.2)}
+.about li i{color:var(--ink-2)}
+
+/* order slip */
+.order{background:var(--sky)}
+.slip{max-width:40rem;margin:0 auto;background:var(--sea);padding:clamp(1.6rem,5vw,3rem);border:1.5px solid var(--ink);border-radius:3px 7px 4px 6px;box-shadow:8px 10px 0 -3px rgba(47,48,46,.18)}
+.slip h2{font-size:clamp(2rem,4.4vw,2.9rem)}
+.slip fieldset{border:0;margin:1.2rem 0 1.6rem;padding:0}
+.slip legend{padding:0;margin-bottom:.4rem;font-style:italic;color:var(--ink-2)}
+.slip label{display:flex;align-items:center;gap:.9rem;min-height:48px;font-size:1.25rem;border-bottom:1px dashed rgba(47,48,46,.3);cursor:pointer}
+.slip input{width:22px;height:22px;accent-color:var(--ribbon);flex:none}
+.slip .alt{margin:1.4rem 0 0;font-size:1.05rem}
+.slip:not([data-ready]) fieldset,.slip:not([data-ready]) .js-only{display:none}
+.slip:not([data-ready]) #slip-go{margin-top:.6rem}
+footer{background:var(--box);color:#C9C2BD;text-align:center;padding:1.6rem 1rem 2rem;font-size:.95rem}
+
+@media (max-width:760px){
+  .nmf .wrap,.fair .wrap,.about .wrap{grid-template-columns:1fr}
+  .nmf figure img{max-width:260px}
+  .about figure img{max-width:240px}
+  .book{grid-template-columns:110px minmax(0,1fr)}
+  .book .body{grid-column:1/-1}
+}
+/* short landscape screens: keep the hero words to the line and the buttons */
+@media (max-height:540px) and (min-aspect-ratio:23/20){
+  .copy{width:min(42vw,30rem)}
+  .copy p:not(.tagline){display:none}
+  .copy p.tagline{font-size:clamp(1.25rem,2.4vw,1.8rem)}
+}
+/* the line only gets the sky when there is room above the title */
+@media (max-aspect-ratio:1/2){.m-only{display:block}}
+@media (prefers-reduced-motion:reduce){
+  .js .hero{height:100svh}
+  .js .box,.js .lid,.js .petals{display:none}
+  .rib-btn::before{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the books</a>
+<div class="strip">A homepage idea made by Sparsh Saini for Julie Kay. Not her official site.</div>
+
+<header class="hero" id="top">
+  <div class="stage">
+    <div class="scene">
+      <div class="cover">
+        <picture>
+          <source media="(max-aspect-ratio:23/20)" srcset="img/plate-m.jpg">
+          <img class="plate" src="img/plate-d.jpg" alt="" fetchpriority="high">
+        </picture>
+        <img class="pl ships" src="img/ships.webp" alt="" width="162" height="138" data-z="10">
+        <div class="pl para" data-z="40"><img src="img/parasol.webp" alt="" width="330" height="330"></div>
+        <img class="pl couple" src="img/couple.webp" alt="A sailor and a woman in a red kimono sit side by side on a bench, looking out to sea, from the cover of Not My Father" width="900" height="912" data-z="40">
+        <p class="pl ttl" aria-hidden="true" data-z="40"><span class="w1">NOT</span><span class="w2">my</span><span class="w3">FATHER</span></p>
+        <img class="pl branch fade-l" src="img/branch.webp" alt="" width="396" height="1326" data-z="150">
+        <img class="pl blossoms fade-l" src="img/blossoms.webp" alt="" width="1050" height="333" data-z="190">
+        <div class="pl rib fade-l" data-z="190">
+          <div class="ribm"><img src="img/ribbon.webp" alt="" width="1050" height="258"></div>
+          <h1>Julie Kay</h1>
+        </div>
+      </div>
+      <p class="tagline m-only">Sometimes, family treasures hold the key to family secrets…</p>
+    <div class="copy">
+      <p class="tagline">Sometimes, family treasures hold the key to family secrets…</p>
+      <p><i>Not My Father</i> is Julie Kay’s debut novel, drawn from her father’s experiences in post-war Japan. Email Julie for a copy and she’ll post it out, or deliver it if you’re local.</p>
+      <div class="acts">
+        <a class="rib-btn" href="mailto:juliekloppenborg1@gmail.com?subject=A%20copy%20of%20Not%20My%20Father">Buy a copy from Julie</a>
+        <a class="text-link" href="#books">Her four books</a>
+      </div>
+    </div>
+    </div>
+    <div class="dim"></div>
+    <div class="box" aria-hidden="true">
+      <div class="wall t"></div><div class="wall b"></div><div class="wall l"></div><div class="wall r"></div>
+      <div class="edge"></div>
+    </div>
+    <div class="petals" aria-hidden="true">
+      <img src="img/flower0.webp" alt="" width="114" height="108"><img src="img/flower1.webp" alt="" width="108" height="108"><img src="img/flower2.webp" alt="" width="108" height="96"><img src="img/flower1.webp" alt="" width="108" height="108"><img src="img/flower0.webp" alt="" width="114" height="108"><img src="img/flower2.webp" alt="" width="108" height="96"><img src="img/flower0.webp" alt="" width="114" height="108">
+    </div>
+    <div class="lid" aria-hidden="true">
+      <div class="lid-in">
+        <p class="who">Julie Kay</p>
+        <p class="line">Packing up the family home, Jules finds a black box hidden at the back of her father’s wardrobe.</p>
+        <p class="lid-book"><i>Not My Father</i>, a novel</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="sec nmf" id="books" aria-labelledby="nmf-h">
+    <div class="wrap">
+      <figure>
+        <img src="img/not-my-father.jpg" alt="The cover of Not My Father by Julie Kay" width="350" height="541" loading="lazy">
+      </figure>
+      <div>
+        <h2 id="nmf-h">Not My Father</h2>
+        <blockquote>
+          <p class="first">Sometimes, family treasures hold the key to family secrets…</p>
+          <p>While packing up the family home, Danny’s daughter, Jules, finds a black box hidden at the back of his wardrobe. Danny suffers from post-traumatic stress syndrome and has been in and out of psychiatric hospitals for years. The unexpected contents of his box take Jules and her sister on a journey to find out what really happened to their father in occupied Japan after the war.</p>
+          <p>What they discover is a love story about ordinary people, a man and a woman, a child and a father, who lived extraordinary lives. This is a tale of mateship, bravery and a romance that blossomed against all odds.</p>
+        </blockquote>
+        <div class="buy">
+          <a class="rib-btn" href="mailto:juliekloppenborg1@gmail.com?subject=A%20copy%20of%20Not%20My%20Father">Buy a copy from Julie</a>
+          <a class="text-link" href="https://www.readings.com.au/product/9781925846607/not-my-father--julie-kay--2019--9781925846607">Order it through Readings</a>
+        </div>
+        <p class="why small">Published by Vivid in 2019.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec shelf" aria-labelledby="shelf-h">
+    <div class="wrap">
+      <h2 id="shelf-h">Three more since</h2>
+      <svg class="pen" viewBox="0 0 1000 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 120 5, 210 10, 330 7 S 560 4, 690 8 S 900 10, 998 6" fill="none" stroke="currentColor" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg>
+
+      <article class="book" aria-labelledby="ttb-h">
+        <img src="img/the-ties-that-bind.jpg" alt="The cover of The Ties That Bind by Julie Kay" width="333" height="500" loading="lazy">
+        <div class="body">
+          <h3 id="ttb-h">The Ties That Bind</h3>
+          <p class="kind">Historical romance, 2023</p>
+          <p>Set amongst the giant ghost gums of country Victoria, follow the trials and tribulations of two sisters who must battle through great personal sacrifice, unrelenting passions and disarming loss. The Vietnam War arrives and brings them more heartbreaking tragedy, loss and unrequited love from which they may not recover.</p>
+          <p class="prize">Nominated for the HNSA ARA Historical Novel Prize 2023 and for the University of Queensland Fiction Book Award in the 2023 Queensland Literary Awards.</p>
+          <div class="buy"><a class="rib-btn" href="mailto:juliekloppenborg1@gmail.com?subject=A%20copy%20of%20The%20Ties%20That%20Bind">Buy a copy from Julie</a></div>
+        </div>
+      </article>
+      <svg class="pen" viewBox="0 0 1000 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 6 C 150 9, 260 4, 400 7 S 620 10, 760 6 S 930 5, 998 8" fill="none" stroke="currentColor" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg>
+
+      <article class="book" aria-labelledby="rb-h">
+        <img src="img/river-bend.jpg" alt="The cover of River Bend by Julie Kay" width="367" height="540" loading="lazy">
+        <div class="body">
+          <h3 id="rb-h">River Bend</h3>
+          <p class="kind">A small-town love story, 2025</p>
+          <p>Fleeing Melbourne for the country, Lara Benton leaves the trauma of her past behind her. After being welcomed by the River Bend community, Lara settles into the slower pace of country life and begins to love all the quirky characters she meets along the way. But all at River Bend is not what it seems.</p>
+          <div class="buy">
+            <a class="rib-btn" href="mailto:juliekloppenborg1@gmail.com?subject=A%20copy%20of%20River%20Bend">Buy a copy from Julie</a>
+            <a class="text-link" href="https://www.readings.com.au/product/9781763831315/river-bend--julie-kay--2025--9781763831315">Order it through Readings</a>
+          </div>
+        </div>
+      </article>
+      <svg class="pen" viewBox="0 0 1000 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 7 C 140 4, 300 10, 440 7 S 640 4, 800 8 S 940 9, 998 6" fill="none" stroke="currentColor" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg>
+
+      <article class="book" aria-labelledby="cr-h">
+        <img src="img/crikey-roo.jpg" alt="The cover of Crikey Roo and the Riddler by Julie Kay" width="313" height="500" loading="lazy">
+        <div class="body">
+          <h3 id="cr-h">Crikey Roo and the Riddler</h3>
+          <p class="kind">Middle grade adventure, her latest</p>
+          <p>Roo and the Ruby Joy Gang aren’t your average kids. With their trusty Malvern Star bikes, scraped knees, and Sandy the golden terrier riding snug in Roo’s jacket, they spend their days chasing fun through the sun-drenched streets of 1970s suburban Australia.</p>
+          <div class="buy">
+            <a class="rib-btn" href="mailto:juliekloppenborg1@gmail.com?subject=A%20copy%20of%20Crikey%20Roo%20and%20the%20Riddler">Buy a copy from Julie</a>
+            <a class="text-link" href="https://www.readings.com.au/product/9781763831322/crikey-roo-and-the-riddler--julie-kay--2025--9781763831322">Order it through Readings</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec class" aria-labelledby="class-h">
+    <div class="wrap">
+      <h2 id="class-h">Crikey Roo goes to school</h2>
+      <blockquote>
+        <p>“Thank you to this beautiful little group of 3-4 students who read Crikey Roo and the Riddler and invited me to meet with them. Such rich discussion and engaging questions. This is what makes the author journey so special.”</p>
+      </blockquote>
+      <p class="src">Julie on <a href="https://www.instagram.com/juliekayauthor/p/DevrgyDROpz/">Instagram</a>, October 2026</p>
+    </div>
+  </section>
+
+  <section class="sec fair" aria-labelledby="fair-h">
+    <div class="wrap">
+      <p class="date" aria-hidden="true"><span class="d">22</span><span class="m">November, Ballarat</span></p>
+      <div>
+        <h2 id="fair-h">Meet Julie at All Booked Out</h2>
+        <p>Julie is one of the attending authors at Coven Press’s indie book market. Come and say hello, or pick up a copy on the day.</p>
+        <dl>
+          <dt>When</dt><dd>Sunday 22 November 2026, 10am to 3pm</dd>
+          <dt>Where</dt><dd>Brown Hill Community Hall, Ballarat</dd>
+        </dl>
+        <a class="text-link" href="https://covenpress.com.au/all-booked-out-2026">Tickets and the full author list at Coven Press</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec about" aria-labelledby="about-h">
+    <div class="wrap">
+      <figure>
+        <img src="img/julie.jpg" alt="Julie Kay smiling, with trees behind her" width="398" height="500" loading="lazy">
+      </figure>
+      <div>
+        <h2 id="about-h">About Julie</h2>
+        <p>Julie grew up in the Melbourne bayside suburb of Chelsea. As a young adult she lived and worked in London, Israel and Greece, then went to Alice Springs and worked for the Royal Flying Doctor Service as a dental nurse, travelling out to Aboriginal communities.</p>
+        <p>Back in Melbourne she studied at night, graduating with a Bachelor of Arts in English Literature and Sociology in 1992, and went on to teach primary school. She still works part time in education, and writes stories about love, loss and the pursuit of happy endings.</p>
+        <ul>
+          <li>Winner, short story, Mentone Public Library Centenary Literary Festival, May 2025, for <i>A Murder of Crows</i></li>
+          <li>Highly Commended, Peninsula Writers’ Club Writer in Residence 2024, for <i>I Remember You</i></li>
+          <li>Member of the Peninsula Writers’ Club</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec order" aria-labelledby="order-h">
+    <div class="slip" id="slip">
+      <h2 id="order-h">Write to Julie for a copy</h2>
+      <p>Julie sells her books herself, so the email goes straight to her.</p>
+      <fieldset>
+        <legend>Tick the books you’d like</legend>
+        <label><input type="checkbox" name="b" value="Not My Father" checked> Not My Father</label>
+        <label><input type="checkbox" name="b" value="The Ties That Bind"> The Ties That Bind</label>
+        <label><input type="checkbox" name="b" value="River Bend"> River Bend</label>
+        <label><input type="checkbox" name="b" value="Crikey Roo and the Riddler"> Crikey Roo and the Riddler</label>
+      </fieldset>
+      <a class="rib-btn" id="slip-go" href="mailto:juliekloppenborg1@gmail.com?subject=Book%20order">Write the email</a>
+      <p class="alt small"><span class="js-only">It opens your own email app with your list filled in. </span>Or write to <a href="mailto:juliekloppenborg1@gmail.com">juliekloppenborg1@gmail.com</a>, or find her on <a href="https://www.instagram.com/juliekayauthor/">Instagram</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer>A mockup made by Sparsh Saini for Julie Kay. Not affiliated, not live.</footer>
+
+<script>
+(function(){
+  /* order slip: keeps the mailto link in step with the ticked books */
+  var slip=document.getElementById('slip'), go=document.getElementById('slip-go');
+  function upd(){
+    var t=[].slice.call(slip.querySelectorAll('input:checked')).map(function(i){return i.value});
+    var body='Hi Julie,\n\nI’d like '+(t.length?'a copy of:\n'+t.map(function(x){return '  '+x}).join('\n'):'to ask about your books.')+'\n\nMy suburb and postcode: \n\nThanks,\n';
+    go.href='mailto:juliekloppenborg1@gmail.com?subject='+encodeURIComponent(t.length===1?'A copy of '+t[0]:'Book order')+'&body='+encodeURIComponent(body);
+  }
+  slip.addEventListener('change',upd); upd(); slip.setAttribute('data-ready','');
+
+  /* the black box */
+  var rm=matchMedia('(prefers-reduced-motion: reduce)');
+  if(rm.matches) return;
+  // if the reader switches reduced motion on mid-visit, start again in the still version
+  if(rm.addEventListener) rm.addEventListener('change',function(e){if(e.matches)location.reload()});
+  document.documentElement.classList.add('js');
+  var hero=document.querySelector('.hero'), stage=hero.querySelector('.stage'), scene=hero.querySelector('.scene');
+  var lid=hero.querySelector('.lid'), dim=hero.querySelector('.dim'), box=hero.querySelector('.box');
+  var walls=hero.querySelectorAll('.wall'), para=hero.querySelector('.para img');
+  var planes=[].slice.call(hero.querySelectorAll('.pl'));
+  var ships=hero.querySelector('.ships'), branch=hero.querySelector('.branch');
+  var words=hero.querySelectorAll('.ttl span'), name=hero.querySelector('.rib h1');
+  var petals=[].slice.call(hero.querySelectorAll('.petals img'));
+  // blossoms loose in the box: x, y as a share of the floor, z as a share of the box depth, turn, size
+  var PET=[[-.3,-.18,.34,20,1],[.26,-.3,.5,-30,.8],[.08,.22,.22,60,1.1],[-.12,.3,.62,-10,.9],[.34,.12,.42,40,1],[-.36,.06,.74,-50,.8],[.02,-.06,.86,15,1.2]];
+  var P,Z0,top0,len,W,H,mobile;
+  var S0=0.5;
+  function clamp(x){return x<0?0:x>1?1:x}
+  function seg(p,a,b){return clamp((p-a)/(b-a))}
+  function io(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+  function iq(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2}
+  function out(t){return 1-Math.pow(1-t,3)}
+  function offs(el){var x=0,y=0;while(el&&el!==stage){x+=el.offsetLeft;y+=el.offsetTop;el=el.offsetParent}return [x,y]}
+  function measure(){
+    W=stage.clientWidth;H=stage.clientHeight;mobile=W/H<=1.15;
+    P=Math.round(Math.max(W,H)*(mobile?0.95:0.8));Z0=P*(1/S0-1);
+    stage.style.perspective=P+'px';
+    walls[0].style.height=walls[1].style.height=Z0+'px';
+    walls[2].style.width=walls[3].style.width=Z0+'px';
+    planes.forEach(function(el){
+      var o=offs(el); el._z=+el.getAttribute('data-z')||0;
+      var cx=W/2-o[0], cy=H/2-o[1];
+      el.style.transformOrigin=cx+'px '+cy+'px';
+      el._b=[-cx, el.offsetHeight-cy];
+    });
+    top0=hero.offsetTop;len=Math.max(1,hero.offsetHeight-H);
+  }
+  var last=-1;
+  function frame(){
+    var p=clamp((scrollY-top0)/len);
+    if(p===last){return}
+    last=p;
+    // lid lifts off (p .04 to .27)
+    var l=io(seg(p,.04,.27));
+    lid.style.transform='translate3d('+(l*6)+'%,'+(-l*112)+'%,0) rotate('+(l*-5)+'deg)';
+    lid.style.visibility=l>=1?'hidden':'visible';
+    dim.style.opacity=(0.82*(1-out(seg(p,.05,.32)))).toFixed(3);
+    // the camera goes down into the box (p .31 to .8), the peak
+    var d=iq(seg(p,.27,.8)), zw=-Z0*(1-d);
+    box.style.transform='translate3d(0,0,'+zw.toFixed(2)+'px)';
+    box.style.visibility=d>=1?'hidden':'visible';
+    var sf=P/(P-zw);
+    scene.style.transform='scale('+sf.toFixed(4)+')';
+    for(var i=0;i<planes.length;i++){
+      var el=planes[i], z=el._z; if(!z) continue;
+      var k=((P-z)/(P-zw-z))/sf, extra='';
+      if(el===ships) extra=' translateX('+((1-p)*-22).toFixed(2)+'%)';
+      if(el===branch){var b=el._b;extra=' translate('+b[0]+'px,'+b[1]+'px) rotate('+((1-d)*-6).toFixed(2)+'deg) translate('+(-b[0])+'px,'+(-b[1])+'px)'}
+      el.style.transform='scale('+k.toFixed(4)+')'+extra;
+    }
+    // the loose blossoms drift up out of the box and past you
+    var lit=out(seg(p,.1,.3))*(1-seg(p,.66,.8));
+    for(var k=0;k<petals.length;k++){
+      var q=PET[k], zz=zw+q[2]*Z0, den=P-zz, el2=petals[k];
+      if(den<P*.14){el2.style.opacity=0;continue}
+      var sc=P/den, rise=d*H*.18;
+      var near=clamp((sc-1.8)/1.2);
+      el2.style.opacity=(lit*(1-near)).toFixed(3);
+      el2.style.transform='translate3d('+(q[0]*W*sc).toFixed(1)+'px,'+((q[1]*H-rise)*sc).toFixed(1)+'px,0) scale('+(sc*q[4]*(mobile?.8:1)).toFixed(3)+') rotate('+(q[3]+d*120*(k%2?1:-1)).toFixed(1)+'deg)';
+    }
+    // she turns the parasol as you come in
+    para.style.transform='rotate('+(io(seg(p,.28,.96))*-70).toFixed(2)+'deg)';
+    // the title rises in, then her name comes up on the ribbon
+    var ts=[[.7,.81],[.75,.85],[.79,.9]];
+    for(var j=0;j<3;j++){var t=out(seg(p,ts[j][0],ts[j][1]));words[j].style.opacity=t.toFixed(3);words[j].style.transform='translateY('+((1-t)*0.35).toFixed(3)+'em)'}
+    name.style.opacity=out(seg(p,.84,.94)).toFixed(3);
+  }
+  var ticking=false;
+  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(function(){ticking=false;frame()})}}
+  measure();
+  // keyboard users reaching the hero links skip straight to the settled hero
+  hero.querySelector('.copy').addEventListener('focusin',function(){if((scrollY-top0)/len<.95)scrollTo(0,top0+len)});
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',function(){measure();last=-1;frame()});
+  frame();
+})();
+</script>
+</body>
+</html>
